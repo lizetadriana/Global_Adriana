@@ -1,3 +1,4 @@
+from FuncionPDF import *
 listaNombres=[]
 listaEdades=[]
 
@@ -14,12 +15,15 @@ def menu():
             pedirDatos()
         elif(opcion==2):
          imprimirDatos()
-
+        elif(opcion==3):
+            generarPDF()
+        
 
 def pedirDatos():
-    listaNombres.append(input("Ingresa un nombre"))
+    listaNombres.append(input("Ingresa un nombre "))
     listaEdades.append(input("Ingresa una edad "))
     print("Guardado")
+    print("----------------Guardado---------------")
 
 def imprimirDatos():
     for i in range(len(listaNombres)):
