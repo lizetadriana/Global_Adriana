@@ -1,33 +1,68 @@
 from FuncionPDF import *
 from DatosEstaticos import *
-listaNombres=[]
-listaEdades=[]
+from nivelUrgencia import *
+listaNombre=[]
+listaSexo=[]
+listaDomi=[]
+listaTelefono=[]
+listaSangre=[]
+listaCURP=[]
+listaFecha=[]
+listaNSS=[]
 
 def menu():
     opcion=1
     while(opcion!=0):
-        print("1. Pedir Datos")
-        print("2. Imprimir datos")
-        print("3. Generar PDF")
-        print("4. Generar QR")
-        print("5. Listar productos")
+        print("1. Dar de alta.")
+        print("2. Ingresar documentación")
+        print("3. Expediente.")
+        print("4. Especialidades.")
+        print("5. Nivel de urgencia.")
+        print("6. Tipo de urgencia.")
+        print("7. Generar PDF")
+        print("8. Generar QR")
+        print("9. Imprimir datos personales.")
+        print("10. Imprimir documentación.")
         print("0. Salir")
         opcion=int(input("Elige una opcion "))
         if(opcion==1):
             pedirDatos()
         elif(opcion==2):
-         imprimirDatos()
+         documentacion()
         elif(opcion==3):
-            generarPDF(listaNombres,listaEdades)
+            generarPDF(listaNombre,listaSexo)
+        elif(opcion==4):
+            nivelUrgencia()
         elif(opcion==5):
-            listarProductos()
+            listarEspecialidades()
+     
+
+        elif(opcion==9):
+            imprimirDatosPersonales
+        elif(opcion==10):
+            imprimirDocumentacion
+        
 
 def pedirDatos():
-    listaNombres.append(input("Ingresa un nombre "))
-    listaEdades.append(input("Ingresa una edad "))
+    listaNombre.append(input("Ingresa el nombre del paciente: "))
+    listaSexo.append(input("Ingresa el sexo del paciente: "))
+    listaDomi.append(input("Ingresa el domicilio del paciente: "))
+    listaTelefono.append(input("Ingresa el telefono del paciente: "))
     print("Guardado")
     print("----------------Guardado---------------")
 
-def imprimirDatos():
-    for i in range(len(listaNombres)):
-        print(f"Nombre: {listaNombres[i]} Edad: {listaEdades[i]}")
+def documentacion():
+    listaCURP.append(input("Ingresa el CURP del paciente: "))
+    listaFecha.append(input("Ingrese la fecha de nacimiento del paciente: "))
+    listaNSS.append(input("Ingrese el NSS del paciente: "))
+    listaSangre.append(input("Ingrese el tipo de sangre del paciente: "))
+    print("Guardado")
+    print("----------------Guardado---------------")
+
+def imprimirDatosPersonales():
+    for i in range(len(listaNombre)):
+        print(f"Nombre: {listaNombre[i]} Sexo: {listaSexo[i]} Domicilio: {listaDomi[i]} Telefono: {listaDomi[i]} ")
+    
+def imprimirDocumentacion():
+    for i in range(len(listaCURP)):
+        print(f"CURP: {listaCURP[i]} Fecha de nacimiento: {listaFecha[i]} NSS: {listaNSS[i]} Tipo de sangre: {listaSangre[i]}")
