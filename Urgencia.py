@@ -27,17 +27,23 @@ def tipoUrgencia():
 
 def nivel1():
     op = 1
-    while op != 6:
+    while op != 4:
         print("1. Paro cardiorrespiratorio.")
         print("2. Hemorragias severas.")
         print("3. Pérdida de un órgano.")
-        print("4. Volver al menú principal.")
+        print("4. Labor de parto.")
+        print("5. Luxación de alguna parte del cuerpo.")
+        print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
             pedir_datos_paciente()
         elif op == 2:
             pedir_datos_paciente()
         elif op == 3:
+            pedir_datos_paciente()
+        elif op == 4:
+            pedir_datos_paciente()
+        elif op == 5:
             pedir_datos_paciente()
 
 def nivel2():
@@ -56,6 +62,10 @@ def nivel2():
             pedir_datos_paciente()
         elif op == 3:
             pedir_datos_paciente()
+        elif op == 4:
+            pedir_datos_paciente()
+        elif op == 5:
+            pedir_datos_paciente()
 
 def nivel3():
     op = 1
@@ -64,7 +74,7 @@ def nivel3():
         print("2. Cuerpo extraño en el oído sin sangrado.")
         print("3. Dolor lumbar.")
         print("4. Lumbalgia súbita")
-        print("5. ")
+        print("5. Infección en cuencas de ojos.")
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
@@ -73,20 +83,29 @@ def nivel3():
             pedir_datos_paciente()
         elif op == 3:
             pedir_datos_paciente()
-
+        elif op == 4:
+            pedir_datos_paciente()
+        elif op == 5:
+            pedir_datos_paciente()
 def nivel4():
     op = 1
     while op != 6:
         print("1. Dolor en el estómago.")
         print("2. Sinusitis.")
-        print("3. ")
-        print("4. ")
-        print("5. ")
+        print("3. Infección en vías urinarias.")
+        print("4. Dolores musculares.")
+        print("5. Virus varicela-zoster.")
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
             pedir_datos_paciente()
         elif op == 2:
+            pedir_datos_paciente()
+        elif op == 3:
+            pedir_datos_paciente()
+        elif op == 4:
+            pedir_datos_paciente()
+        elif op == 5:
             pedir_datos_paciente()
 
 def nivel5():
@@ -94,9 +113,9 @@ def nivel5():
     while op != 6:
         print("1. Dolor de garganta.")
         print("2. Cólico abdominal.")
-        print("3. Dolor de cabeza")
-        print("4. ")
-        print("5. ")
+        print("3. Dolor de cabeza.")
+        print("4. Insomnio.")
+        print("5. Estres postraumatico.")
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
@@ -104,6 +123,10 @@ def nivel5():
         elif op == 2:
             pedir_datos_paciente()
         elif op == 3:
+            pedir_datos_paciente()
+        elif op == 4:
+            pedir_datos_paciente()
+        elif op == 5:
             pedir_datos_paciente()
 
 def pedir_datos_paciente():
