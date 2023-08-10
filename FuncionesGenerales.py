@@ -1,4 +1,3 @@
-from FuncionPDF import *
 from DatosEstaticos import *
 from nivelUrgencia import *
 from Urgencia import *
