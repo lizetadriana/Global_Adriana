@@ -1,6 +1,7 @@
 nombre = []
 edad = []
 seguro = []
+nivel_urgencia=[]
 
 def tipoUrgencia():
     op = 1
@@ -36,15 +37,20 @@ def nivel1():
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
-            pedir_datos_paciente()
+            pedir_datos_paciente("1.1 Paro cardiorrespiratorio")
+            break
         elif op == 2:
-            pedir_datos_paciente()
+            pedir_datos_paciente("1.2 Hemorragias severas.")
+            break
         elif op == 3:
-            pedir_datos_paciente()
+            pedir_datos_paciente("1.3 Pérdida de un órgano.")
+            break
         elif op == 4:
-            pedir_datos_paciente()
+            pedir_datos_paciente("1.4 Labor de parto.")
+            break
         elif op == 5:
-            pedir_datos_paciente()
+            pedir_datos_paciente("1.5 Luxación de alguna parte del cuerpo.")
+            break
 
 def nivel2():
     op = 1
@@ -57,36 +63,47 @@ def nivel2():
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
-            pedir_datos_paciente()
+            pedir_datos_paciente("2.1 Dolor extremo.")
+            break
         elif op == 2:
-            pedir_datos_paciente()
+            pedir_datos_paciente("2.2 Heridas no vitales.")
+            break
         elif op == 3:
-            pedir_datos_paciente()
+            pedir_datos_paciente("2.3 Diarrea aguda con dolor abdominal.")
+            break
         elif op == 4:
-            pedir_datos_paciente()
+            pedir_datos_paciente("2.4 Vómito sin tolerancia a vía oral.")
+            break
         elif op == 5:
-            pedir_datos_paciente()
+            pedir_datos_paciente("2.5 Fiebre aguda.")
+            break
 
 def nivel3():
     op = 1
     while op != 6:
         print("1. Dolor por un par de días.")
-        print("2. Cuerpo extraño en el oído sin sangrado.")
+        print("2. Cuerpo extraño dolor en el oído sin sangrado.")
         print("3. Dolor lumbar.")
-        print("4. Lumbalgia súbita")
+        print("4. Lumbalgia súbita.")
         print("5. Infección en cuencas de ojos.")
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
-            pedir_datos_paciente()
+            pedir_datos_paciente("3.1  Dolor por un par de días.")
+            break
         elif op == 2:
-            pedir_datos_paciente()
+            pedir_datos_paciente("3.2 Cuerpo extraño dolor en el oído sin sangrado.")
+            break
         elif op == 3:
-            pedir_datos_paciente()
+            pedir_datos_paciente("3.3 Dolor lumbar.")
+            break
         elif op == 4:
-            pedir_datos_paciente()
+            pedir_datos_paciente("3.4 Lumbalgia súbita.")
+            break
         elif op == 5:
-            pedir_datos_paciente()
+            pedir_datos_paciente("3.5 Infección en cuencas de ojos.")
+            break
+
 def nivel4():
     op = 1
     while op != 6:
@@ -98,15 +115,20 @@ def nivel4():
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
-            pedir_datos_paciente()
+            pedir_datos_paciente("4.1 Dolor en el estómago.")
+            break
         elif op == 2:
-            pedir_datos_paciente()
+            pedir_datos_paciente("4.2 Sinusitis.")
+            break
         elif op == 3:
-            pedir_datos_paciente()
+            pedir_datos_paciente("4.3 Infección en vías urinarias.")
+            break
         elif op == 4:
-            pedir_datos_paciente()
+            pedir_datos_paciente("4.4 Dolores musculares.")
+            break
         elif op == 5:
-            pedir_datos_paciente()
+            pedir_datos_paciente("4.5 Virus varicela-zoster.")
+            break
 
 def nivel5():
     op = 1
@@ -119,20 +141,26 @@ def nivel5():
         print("6. Volver al menú principal.")
         op = int(input("Elige una opción: "))
         if op == 1:
-            pedir_datos_paciente()
+            pedir_datos_paciente("5.1 Dolor de garganta.")
+            break
         elif op == 2:
-            pedir_datos_paciente()
+            pedir_datos_paciente("5.2 Cólico abdominal.")
+            break
         elif op == 3:
-            pedir_datos_paciente()
+            pedir_datos_paciente("5.3 Dolor de cabeza.")
+            break
         elif op == 4:
-            pedir_datos_paciente()
-        elif op == 5:
-            pedir_datos_paciente()
+            pedir_datos_paciente("5.4 Insomnio.")
+            break
+        elif op==5:
+            pedir_datos_paciente("5.5 Estres postraumatico.")
+            break
 
-def pedir_datos_paciente():
+def pedir_datos_paciente(nivel):
     nombre.append(input("Ingresa el nombre del paciente: "))
     edad.append(input("Ingresa la edad del paciente: "))
     seguro.append(input("Ingresa el número de seguro social del paciente: "))
+    nivel_urgencia.append(nivel)
     print("---------------- Información guardada ---------------")
     input("Presiona Enter para continuar...")
 

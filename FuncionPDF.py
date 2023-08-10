@@ -1,4 +1,5 @@
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 from FuncionQR import *
 import datetime
 import locale
@@ -11,24 +12,26 @@ def generarPDF(listaNombre, listaSexo, listaDomi, listaTelefono):
     fecha_actual=datetime.datetime.now()
     nombreArchivo=ruta + "reporteGlobal"+fecha_actual.strftime('%d_%m_%Y_%H_%M_%S')+".pdf"
     generarQR(nombreQR, "Hola desde funcion")
-    c=canvas.Canvas(nombreArchivo)
-    xInicial=200
-    yInicial=700
-    c.setFont('Helvetica', 20)
-    c.drawString(xInicial, yInicial, "Nombre")
-    c.drawString(xInicial + 120, yInicial, "Sexo")
-    c.drawString(xInicial + 240, yInicial, "Domicilio")
-    c.drawString(xInicial + 400, yInicial, "Telefono")
-    for i in range(len(listaNombre)):
-        c.setFont('Helvetica', 18)
-        yInicial = yInicial - 20
-        c.drawString(xInicial, yInicial, listaNombre[i])
-        c.drawString(xInicial + 120, yInicial, listaSexo[i])
-        c.drawString(xInicial + 240, yInicial, listaDomi[i])
-        c.drawString(xInicial + 400, yInicial, listaTelefono[i])
+    c=canvas.Canvas(nombreArchivo, pagesize=A4)
+    
+    c.setFont('Helvetica-Bold',20)
+    c.drawString(180, 750, "Pacientes.")
 
-        c.drawImage(nombreQR, 200, 400, 100, 100)
-        c.drawImage(logo,50, 850, 90,90)
+    c.setFont('Helvetica', 18)
+    c.drawString(60, 680, "Nombre")
+    c.drawString(100, 680, "Sexo")
+    c.drawString(150, 680, "Domicilio")
+    c.drawString(200, 680, "Telefono")
+    for i in range(len(listaNombre)):
+        c.setFont('Helvetica', 16)
+        
+        c.drawString(60, 640, -40, listaNombre[i])
+        c.drawString(100, 640, -40, listaSexo[i])
+        c.drawString(150, 640, -40, listaDomi[i])
+        c.drawString(200, 640, -40, listaTelefono[i])
+
+    c.drawImage(nombreQR, 450, 50, 100, 100)
+    c.drawImage(logo,50, 750, 100, 80)
 
     c.save()
     print("---------------Reporte global generado------")

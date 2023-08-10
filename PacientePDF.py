@@ -1,4 +1,5 @@
-from reportlab.pdfgen import canvas
+from reportlab.pdfgen import canvas 
+from reportlab.lib.pagesizes import A4
 from FuncionQR import *
 import datetime
 import locale
@@ -11,39 +12,37 @@ def generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPac
     fecha_actual = datetime.datetime.now()
     nombreArchivo = ruta + nombrePaciente + ".pdf"
     generarQR(nombreQR, "Hola desde funcion")
-    c = canvas.Canvas(nombreArchivo)
-    xInicial = 70
-    yInicial = 700
-    c.setFont('Helvetica-bold',26)
-    c.drawString(300, 750, "Expediente Individual.")
-    c.setFont('Helvetica', 20)
-    c.drawString(xInicial, yInicial, "Nombre")
-    c.drawString(xInicial + 120, yInicial, "Sexo")
-    c.drawString(xInicial + 240, yInicial, "Domicilio")
-    c.drawString(xInicial + 400, yInicial, "Telefono")
-    c.setFont('Helvetica', 18)
-    yInicial = yInicial - 20
-    c.drawString(xInicial, yInicial, nombrePaciente)
-    c.drawString(xInicial + 120, yInicial, sexoPaciente)
-    c.drawString(xInicial + 240, yInicial, domiPaciente)
-    c.drawString(xInicial + 400, yInicial, telefonoPaciente)
+    c = canvas.Canvas(nombreArchivo, pagesize=A4)
+
+    c.setFont('Helvetica-Bold',24)
+    c.drawString(180, 750, "Expediente Individual.")
 
     c.setFont('Helvetica', 20)
-    yInicial -= 40
-    c.drawString(xInicial, yInicial, "CURP")
-    c.drawString(xInicial + 120, yInicial, "Fecha de nacimiento")
-    c.drawString(xInicial + 300, yInicial, "NSS")
-    c.drawString(xInicial + 400, yInicial, "Tipo de sangre")
+    c.drawString(60, 680, "Nombre:")
+    c.drawString(60, 640, "Sexo:")
+    c.drawString(60, 600, "Domicilio:")
+    c.drawString(60, 560, "Telefono:")
 
     c.setFont('Helvetica', 18)
-    yInicial -= 20
-    c.drawString(xInicial, yInicial, curpPaciente)
-    c.drawString(xInicial + 120, yInicial, fechaPaciente)
-    c.drawString(xInicial + 300, yInicial, nssPaciente)
-    c.drawString(xInicial + 400, yInicial, sangrePaciente)
+    c.drawString(280, 680, nombrePaciente)
+    c.drawString(280, 640, sexoPaciente)
+    c.drawString(280, 600, domiPaciente)
+    c.drawString(280, 560, telefonoPaciente)
 
-    c.drawImage(nombreQR, 200, 400, 100, 100)
-    c.drawImage(logo,50, 850, 90,90)
+    c.setFont('Helvetica', 20)
+    c.drawString(60, 520, "CURP:")
+    c.drawString(60, 480, "Fecha de nacimiento:")
+    c.drawString(60, 440, "NSS:")
+    c.drawString(60, 400, "Tipo de sangre:")
+
+    c.setFont('Helvetica', 18)
+    c.drawString(280, 520, curpPaciente)
+    c.drawString(280, 480, fechaPaciente)
+    c.drawString(280, 440, nssPaciente)
+    c.drawString(280, 400, sangrePaciente)
+
+    c.drawImage(nombreQR, 450, 50, 100, 100)
+    c.drawImage(logo,50, 750, 100, 80)
 
     c.save()
     print(f"--------Reporte de {nombrePaciente} generado------")

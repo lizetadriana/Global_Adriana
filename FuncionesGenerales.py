@@ -13,9 +13,7 @@ listaSangre = []
 listaCURP = []
 listaFecha = []
 listaNSS = []
-nombre=[]
-edad=[]
-nivel_urgencia=[]
+
 
 def menu():
     opcion = 1
@@ -50,8 +48,8 @@ def menu():
             tipoUrgencia()
         elif opcion == 9:
             imprimirPacientesEnUrgencias()
-        elif opcion==10:
-            imprimirPacientesEnUrgencias()
+        
+            
 
 def pedirDatos():
     listaNombre.append(input("Ingresa el nombre del paciente: "))
@@ -131,7 +129,10 @@ def imprimirPacientesEnUrgencias():
 
     print("Pacientes en urgencias:")
     for i in range(len(nombre)):
-        print(f"{i + 1}. Nombre: {nombre[i]} Edad: {edad[i]} Número de Seguro Social: {seguro[i]} Nivel de urgencia: {nivel_urgencia[i]}")
+        if i < len(edad) and i < len(seguro) and i < len(nivel_urgencia):
+            print(f"{i + 1}. Nombre: {nombre[i]} ")
+        else:
+            print(f"Error: Datos incompletos para el paciente {nombre[i]}")
 
     while True:
         try:
