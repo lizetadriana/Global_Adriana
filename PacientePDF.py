@@ -8,49 +8,44 @@ from PacientePDF import *
 
 locale.setlocale(locale.LC_ALL, "")
 ruta = "C:/Users/adria/OneDrive/Escritorio/Modularidad en Python/Prueba de funciones/"
-nombreQR=ruta+"miQR.png"
-logo=ruta+"Hospitales.png"
+nombreQR = ruta + "miQR.png"
+logo = ruta + "Hospitales.png"
 
-def generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPaciente, curpPaciente, fechaPaciente, nssPaciente, sangrePaciente, atendido, nivel_urgencia):
+def generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPaciente, curpPaciente, fechaPaciente, nssPaciente, sangrePaciente):
     fecha_actual = datetime.datetime.now()
     nombreArchivo = ruta + nombrePaciente + ".pdf"
-    generarQR(nombreQR, "Hola desde funcion")
+    generarQR(nombreQR, f"Nombre: {nombrePaciente}, NSS: {nssPaciente}")
     c = canvas.Canvas(nombreArchivo, pagesize=A4)
 
     c.setFont('Helvetica-Bold',24)
-    c.drawString(180, 750, "Expediente Individual.")
+    c.drawString(180, 700, "Expediente Individual.")
 
-    c.setFont('Helvetica', 20)
-    c.drawString(60, 680, "Nombre:")
-    c.drawString(60, 640, "Sexo:")
-    c.drawString(60, 600, "Domicilio:")
-    c.drawString(60, 560, "Telefono:")
-
-    c.setFont('Helvetica', 18)
-    c.drawString(280, 680, nombrePaciente)
-    c.drawString(280, 640, sexoPaciente)
-    c.drawString(280, 600, domiPaciente)
-    c.drawString(280, 560, telefonoPaciente)
-
-    c.setFont('Helvetica', 20)
-    c.drawString(60, 520, "CURP:")
-    c.drawString(60, 480, "Fecha de nacimiento:")
-    c.drawString(60, 440, "NSS:")
-    c.drawString(60, 400, "Tipo de sangre:")
+    c.setFont('Helvetica-Bold', 20)
+    c.drawString(60, 650, "Nombre:")
+    c.drawString(60, 600, "Sexo:")
+    c.drawString(60, 550, "Domicilio:")
+    c.drawString(60, 500, "Telefono:")
 
     c.setFont('Helvetica', 18)
-    c.drawString(280, 520, curpPaciente)
-    c.drawString(280, 480, fechaPaciente)
-    c.drawString(280, 440, nssPaciente)
-    c.drawString(280, 400, sangrePaciente)
+    c.drawString(280, 650, nombrePaciente)
+    c.drawString(280, 600, sexoPaciente)
+    c.drawString(280, 550, domiPaciente)
+    c.drawString(280, 500, telefonoPaciente)
 
-    if atendido:
-        c.setFont('Helvetica', 14)
-        c.drawString(60, 320, "Atendido en Urgencias")
-        c.drawString(60, 290, f"Nivel de Urgencia: {nivel_urgencia}")
+    c.setFont('Helvetica-Bold', 20)
+    c.drawString(60, 450, "CURP:")
+    c.drawString(60, 400, "Fecha de nacimiento:")
+    c.drawString(60, 350, "NSS:")
+    c.drawString(60, 300, "Tipo de sangre:")
+
+    c.setFont('Helvetica', 18)
+    c.drawString(280, 450, curpPaciente)
+    c.drawString(280, 400, fechaPaciente)
+    c.drawString(280, 350, nssPaciente)
+    c.drawString(280, 300, sangrePaciente)
 
     c.drawImage(nombreQR, 450, 50, 100, 100)
-    c.drawImage(logo,50, 750, 100, 80)
+    c.drawImage(logo,50, 750, 200, 100)
 
     c.save()
     print(f"--------Reporte de {nombrePaciente} generado------")

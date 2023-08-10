@@ -121,8 +121,8 @@ def imprimirInformacionPaciente():
 
 def generarPDFPacienteIndividual():
     print("Pacientes disponibles:")
-    for i, nombre in enumerate(listaNombre):
-        print(f"{i + 1}. {nombre}")
+    for i in range(len(listaNombre)):
+        print(f"{i + 1}. {listaNombre[i]}")
 
     if not listaNombre:
         print("No hay pacientes dados de alta.")
@@ -135,13 +135,6 @@ def generarPDFPacienteIndividual():
                 break
             elif 1 <= opcion <= len(listaNombre):
                 paciente_index = opcion - 1
-                if paciente_index < len(atendido_en_urgencias) and paciente_index < len(nivel_urgencia):
-                    atendido = atendido_en_urgencias[paciente_index]
-                    nivel_urgencia_paciente = nivel_urgencia[paciente_index]
-                else:
-                    print("Error: Datos incompletos para el paciente en urgencias.")
-                    continue
-                
                 nombrePaciente = listaNombre[paciente_index]
                 sexoPaciente = listaSexo[paciente_index]
                 domiPaciente = listaDomi[paciente_index]
@@ -151,49 +144,40 @@ def generarPDFPacienteIndividual():
                 nssPaciente = listaNSS[paciente_index]
                 sangrePaciente = listaSangre[paciente_index]
 
-                generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPaciente, curpPaciente, fechaPaciente, nssPaciente, sangrePaciente, atendido, nivel_urgencia_paciente)
+                generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPaciente, curpPaciente, fechaPaciente, nssPaciente, sangrePaciente)
                 break
             else:
                 print("Opción inválida. Intente nuevamente.")
         except ValueError:
             print("Opción inválida. Intente nuevamente.")
 
+
 def imprimirPacientesEnUrgencias():
-    if not listaNombre:
+    if not nombre:
         print("No hay pacientes en urgencias.")
         return
 
     print("Pacientes en urgencias:")
-    for i, nombre_paciente in enumerate(listaNombre):
+    for i in range(len(nombre)):
         if i < len(edad) and i < len(seguro) and i < len(nivel_urgencia):
-            print(f"{i + 1}. Nombre: {nombre_paciente}")
+            print(f"{i + 1}. Nombre: {nombre[i]} ")
         else:
-            print(f"Error: Datos incompletos para el paciente {nombre_paciente}")
+            print(f"Error: Datos incompletos para el paciente {nombre[i]}")
 
     while True:
         try:
             opcion = int(input("Ingresa el número del paciente para ver su información detallada (0 para salir): "))
             if opcion == 0:
                 break
-            elif 1 <= opcion <= len(listaNombre):
+            elif 1 <= opcion <= len(nombre):
                 paciente_index = opcion - 1
-                if paciente_index < len(atendido_en_urgencias) and paciente_index < len(nivel_urgencia):
-                    atendido = atendido_en_urgencias[paciente_index]
-                    nivel_urgencia_paciente = nivel_urgencia[paciente_index]
-                else:
-                    print("Error: Datos incompletos para el paciente en urgencias.")
-                    continue
-                
                 print("Información detallada del paciente en urgencias:")
-                print(f"Nombre: {listaNombre[paciente_index]} Edad: {edad[paciente_index]} Número de Seguro Social: {seguro[paciente_index]} Nivel de urgencia: {nivel_urgencia[paciente_index]}")
-                
-                generarPDFIndividual(listaNombre[paciente_index], listaSexo[paciente_index], listaDomi[paciente_index], listaTelefono[paciente_index], listaCURP[paciente_index], listaFecha[paciente_index], listaNSS[paciente_index], listaSangre[paciente_index], atendido, nivel_urgencia_paciente)
-
+                print(f"Nombre: {nombre[paciente_index]} Edad: {edad[paciente_index]} Número de Seguro Social: {seguro[paciente_index]} Nivel de urgencia: {nivel_urgencia[paciente_index]}")
+                break
             else:
                 print("Opción inválida. Intente nuevamente.")
         except ValueError:
             print("Opción inválida. Intente nuevamente.")
-
 
 doctores = ["Dr. Angel Leon.", "Dr. Enrique Lopez", "Dr. Alejandro Ceron"]
 enfermeras = ["Enf. Ana Lopez", "Enf. Teresa Sanchez", "Enf. Guadalupe Lopez"]

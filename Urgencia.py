@@ -1,7 +1,10 @@
+from collections import deque
+
 nombre = []
 edad = []
 seguro = []
 nivel_urgencia=[]
+cola_pacientes = deque()
 
 def tipoUrgencia():
     op = 1
@@ -161,6 +164,6 @@ def pedir_datos_paciente(nivel):
     edad.append(input("Ingresa la edad del paciente: "))
     seguro.append(input("Ingresa el número de seguro social del paciente: "))
     nivel_urgencia.append(nivel)
+    cola_pacientes.append((nombre, edad, seguro, nivel))
     print("---------------- Información guardada ---------------")
     input("Presiona Enter para continuar...")
-
