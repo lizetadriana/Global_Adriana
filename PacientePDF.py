@@ -3,12 +3,15 @@ from reportlab.lib.pagesizes import A4
 from FuncionQR import *
 import datetime
 import locale
+from Urgencia import *
+from PacientePDF import *
+
 locale.setlocale(locale.LC_ALL, "")
 ruta = "C:/Users/adria/OneDrive/Escritorio/Modularidad en Python/Prueba de funciones/"
 nombreQR=ruta+"miQR.png"
 logo=ruta+"Hospitales.png"
 
-def generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPaciente, curpPaciente, fechaPaciente, nssPaciente, sangrePaciente):
+def generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPaciente, curpPaciente, fechaPaciente, nssPaciente, sangrePaciente, atendido, nivel_urgencia):
     fecha_actual = datetime.datetime.now()
     nombreArchivo = ruta + nombrePaciente + ".pdf"
     generarQR(nombreQR, "Hola desde funcion")
@@ -40,6 +43,11 @@ def generarPDFIndividual(nombrePaciente, sexoPaciente, domiPaciente, telefonoPac
     c.drawString(280, 480, fechaPaciente)
     c.drawString(280, 440, nssPaciente)
     c.drawString(280, 400, sangrePaciente)
+
+    if atendido:
+        c.setFont('Helvetica', 14)
+        c.drawString(60, 320, "Atendido en Urgencias")
+        c.drawString(60, 290, f"Nivel de Urgencia: {nivel_urgencia}")
 
     c.drawImage(nombreQR, 450, 50, 100, 100)
     c.drawImage(logo,50, 750, 100, 80)
