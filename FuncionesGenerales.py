@@ -39,7 +39,7 @@ def menu():
         elif opcion == 4:
             generarPDFPacienteIndividual()
         elif opcion == 5:
-            tipoUrgencia()
+            listarEspecialidades()
         elif opcion == 6:
             nivelUrgencia()
         elif opcion == 7:
